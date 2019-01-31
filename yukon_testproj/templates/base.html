@@ -19,7 +19,8 @@
             </div>
             <div class="col-sm-4 d-flex justify-content-center align-self-center">
                 {% if not request.user.is_anonymous %}
-                    <span>{{ request.user.username }}</span>&nbsp;|&nbsp;<a href="{% url 'admin:logout' %}?next=/">logout</a>
+                    <span>{{ request.user.username }}</span>&nbsp;|&nbsp;
+                    <a href="{% url 'users_auth:user_sign_out' %}">logout</a>
                 {% endif %}
             </div>
         </div>

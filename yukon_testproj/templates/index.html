@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}-Index{% endblock %}
+
 {% block context %}
     <h2>
         <a href="{% url 'users_auth:user_sign_in' %}">sign in</a> | <a href="#">sign up</a>
