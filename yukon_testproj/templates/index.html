@@ -2,9 +2,11 @@
 {% load static %}
 
 {% block title %}-Index{% endblock %}
+{% block logo_title %} - index page{% endblock logo_title %}
 
 {% block context %}
     <h2>
-        <a href="{% url 'users_auth:user_sign_in' %}">sign in</a> | <a href="#">sign up</a>
+        <a href="{% url 'users_auth:user_sign_in' %}">sign in</a> | <a href="{% url 'users_auth:user_sign_up' %}">
+        sign up</a>
     </h2>
 {% endblock context %}

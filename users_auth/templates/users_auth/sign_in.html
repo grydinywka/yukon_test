@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
+{% block title %}-SignIn{% endblock %}
+{% block logo_title %} - Sign In{% endblock logo_title %}
+
 {% block context %}
-    <form method="post" action="{% url 'users_auth:user_sign_in' %}">
+    <form method="post" action="{% block action %}{% url 'users_auth:user_sign_in' %}{% endblock action %}">
         {% csrf_token %}
         {{ form.non_field_errors }}
         {% for field in form.visible_fields %}
@@ -14,7 +17,7 @@
           </div>
         {% endfor %}
 
-        <button type="submit">Sign in</button>
+        <button type="submit">{% block submit_name %}Sign in{% endblock submit_name %}</button>
         <a class="ml-4" href="{% url 'index' %}">Cancel</a>
     </form>
 {% endblock context %}

@@ -1,0 +1,7 @@
+{% extends 'users_auth/sign_in.html' %}
+
+{% block title %}-SignUp{% endblock %}
+{% block logo_title %} - Sign Up{% endblock logo_title %}
+
+{% block action %}{% url 'users_auth:user_sign_up' %}{% endblock action %}
+{% block submit_name %}Sign up{% endblock submit_name %}
