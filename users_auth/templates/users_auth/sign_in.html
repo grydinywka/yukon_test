@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block context %}
+    <form method="post" action="{% url 'users_auth:user_sign_in' %}">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for field in form.visible_fields %}
+          <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{ field }}
+            {% for error in field.errors %}
+              <div class="help-block errorlist">{{ error }}</div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+
+        <button type="submit">Sign in</button>
+        <a class="ml-4" href="{% url 'index' %}">Cancel</a>
+    </form>
+{% endblock context %}

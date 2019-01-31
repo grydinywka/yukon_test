@@ -9,3 +9,20 @@
 #footer {
     border-top: 1px solid black;
 }
+
+.errorlist {
+    color: red;
+}
+
+.messages {
+    color: white;
+}
+.messages .success {
+    background-color: #28a745;
+}
+.messages .info {
+    background-color: #17a2b8;
+}
+.messages .error {
+    background-color: #dc3545;
+}

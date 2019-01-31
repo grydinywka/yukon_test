@@ -23,14 +23,25 @@
                 {% endif %}
             </div>
         </div>
-        <div class="row" id="content">
-        {% block context %}
-            <div class="col-12 text-center">
-                <h1 class="base-header">THE BASE PAGE</h1>
+        <div class="row mt-1 text-center" id="status-message">
+            <div class="col-12">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
             </div>
-        {% endblock context %}
         </div>
-        <div class="row " id="footer">
+        <div class="row" id="content">
+            <div class="col-12 d-flex justify-content-center align-self-center">
+            {% block context %}
+                <h1 class="base-header">THE BASE PAGE</h1>
+            {% endblock context %}
+            </div>
+        </div>
+        <div class="row" id="footer">
             <div class="col-12">
                 <p>&copy; Test task from Ignatenko for Yukon, 2019</p>
             </div>

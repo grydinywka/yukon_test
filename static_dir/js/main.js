@@ -4,6 +4,7 @@ function autoHeight() {
      $(document).height()
      - $('#header').height()
      - $('#footer').height()
+     - $('#status-message').height()
     ));
 }
 
