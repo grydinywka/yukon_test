@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'api.apps.ApiConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -131,4 +132,3 @@ STATIC_URL = '/static/'
 LOGIN_URL = '/users/login/'
 LOGIN_REDIRECT_URL = '/blog/'
 # LOGOUT_REDIRECT_URL = '/'
-
