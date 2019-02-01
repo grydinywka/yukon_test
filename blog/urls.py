@@ -1,10 +1,12 @@
 from django.urls import path, re_path
 from django.views.generic import TemplateView
-from blog.views import PostsListView
+from blog.views import PostsListView, PostDetailView, PostCreateView, PostUpdateView
 
 
 app_name = "blog"
 urlpatterns = [
     path('', PostsListView.as_view(), name='posts'),
-    # path('login/', SignInView.as_view(), name='user_sign_in'),
+    path('<int:pk>/', PostDetailView.as_view(), name='post_detail'),
+    path('create/', PostCreateView.as_view(), name='post_create'),
+    path('<int:pk>/update/', PostUpdateView.as_view(), name='post_update'),
 ]

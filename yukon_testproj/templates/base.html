@@ -35,6 +35,9 @@
                 {% endif %}
             </div>
         </div>
+        <div class="row" id="buttons">
+            <div class="col-md-8 text-center">{% block buttons %}{% endblock buttons %}</div>
+        </div>
         <div class="row" id="content">
             <div class="col-12 d-flex justify-content-center align-self-center">
             {% block context %}

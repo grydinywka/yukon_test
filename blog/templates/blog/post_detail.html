@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}-Post-{{ post_object.id }}{% endblock %}
+{% block logo_title %} - post {{ post_object.id }}{% endblock logo_title %}
+
+{% block buttons %}
+    {% if request.user == post_object.created_by %}
+<a href="{% url 'blog:post_update' post_object.id %}"><button class="btn btn-warning">Edit the post</button></a>
+    {% endif %}
+{% endblock buttons %}
+{% block context %}
+    <ul class="list-group">
+      <li class="list-group-item">Post's name: {{ post_object.name }}</li>
+      <li class="list-group-item">Post's body: {{ post_object.text }}</li>
+      <li class="list-group-item">Owner: {{ post_object.created_by }}</li>
+      <li class="list-group-item">Created: {{ post_object.created_date }}</li>
+      <li class="list-group-item">Updated: {{ post_object.updated_date }}</li>
+    </ul>
+{% endblock context %}

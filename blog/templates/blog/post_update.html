@@ -1,0 +1,7 @@
+{% extends 'blog/post_create.html' %}
+
+
+{% block title %}-Post-{{ post_object.id }}-Update{% endblock %}
+{% block logo_title %} - post {{ post_object.id }} updating{% endblock logo_title %}
+
+{% block action %}{% url 'blog:post_update' post_object.id %}{% endblock action %}

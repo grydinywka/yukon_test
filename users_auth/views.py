@@ -4,6 +4,7 @@ from django.views.generic.edit import FormView
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib import messages
 from django.conf import settings
+from django.shortcuts import redirect
 from users_auth.forms import SignInForm, SignUpForm
 
 
@@ -27,6 +28,11 @@ class SignInView(FormView):
     def form_invalid(self, form):
         messages.add_message(self.request, messages.ERROR, 'Errors during login!')
         return super().form_invalid(form)
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('blog:posts')
+        return super().get(request, *args, **kwargs)
 
 
 class SignOutView(RedirectView):
@@ -55,3 +61,8 @@ class SignUpView(FormView):
     def form_invalid(self, form):
         messages.add_message(self.request, messages.ERROR, 'Error during registration!')
         return super().form_invalid(form)
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('blog:posts')
+        return super().get(request, *args, **kwargs)
