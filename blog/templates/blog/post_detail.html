@@ -5,7 +5,8 @@
 
 {% block buttons %}
     {% if request.user == post_object.created_by %}
-<a href="{% url 'blog:post_update' post_object.id %}"><button class="btn btn-warning">Edit the post</button></a>
+    <a href="{% url 'blog:post_update' post_object.id %}"><button class="btn btn-warning">Edit the post</button></a>
+    <a href="{% url 'blog:post_delete' post_object.id %}"><button class="btn btn-danger">Delete the post</button></a>
     {% endif %}
 {% endblock buttons %}
 {% block context %}

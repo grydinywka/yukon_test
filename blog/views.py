@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -64,3 +64,22 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
     def form_invalid(self, form):
         messages.add_message(self.request, messages.ERROR, 'Error during updating post {}!'.format(self.object.id))
         return super().form_invalid(form)
+
+class PostDeleteView(LoginRequiredMixin, DeleteView):
+    model = BlogPost
+    success_url = '/blog/'
+    template_name = 'blog/post_delete.html'
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if request.user != self.object.created_by:
+            messages.add_message(self.request, messages.INFO, 'Post #{} was created of other user!'.format(
+                self.object.id))
+            return redirect('blog:posts')
+        return super().get(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        messages.add_message(request, messages.SUCCESS, 'Post with id {} deleted'.format(kwargs['pk']))
+        return super().delete(request, *args, **kwargs)
+
+

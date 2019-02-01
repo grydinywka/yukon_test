@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}-Post-{{ object }}-Delete{% endblock %}
+{% block logo_title %} - post {{ object }} deleting{% endblock logo_title %}
+
+{% block context %}
+<form action="{% url 'blog:post_delete' object.id %}" method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <input type="submit" value="Confirm">
+    <a href="{% url 'blog:posts' %}">Cancel</a>
+</form>
+{% endblock context %}
